@@ -1,6 +1,6 @@
 package core.service;
 
-import core.model.User;
+import core.entity.User;
 import core.repository.ServiceInterface;
 import core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

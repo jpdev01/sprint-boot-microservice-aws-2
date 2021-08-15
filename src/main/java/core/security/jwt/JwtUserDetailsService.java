@@ -19,7 +19,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        core.model.User user = findByLogin(login);
+        core.entity.User user = findByLogin(login);
         if(user == null)
         {
             return null;
@@ -38,7 +38,7 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>());
     }
 
-    private core.model.User findByLogin(String login)
+    private core.entity.User findByLogin(String login)
     {
         return userService.getUserByLogin(login);
     }

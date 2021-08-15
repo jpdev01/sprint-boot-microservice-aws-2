@@ -1,4 +1,4 @@
-package core.model;
+package core.entity;
 
 import javax.persistence.*;
 import java.util.GregorianCalendar;
@@ -15,6 +15,7 @@ public class User {
     private GregorianCalendar lastLogin;
     @ManyToOne(cascade = {CascadeType.ALL})
     private Company company;
+    private Language language;
 
     public Integer getId() {
         return id;
