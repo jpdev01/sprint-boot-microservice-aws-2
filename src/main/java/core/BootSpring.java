@@ -17,6 +17,6 @@ public class BootSpring implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        I18nUtils.teste();
+
      }
 }
