@@ -1,6 +1,6 @@
 package security.jwt;
 
-import com.core.backend.service.UserService;
+import core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +19,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        com.core.backend.entity.User user = findByLogin(login);
+        core.model.User user = findByLogin(login);
         if(user == null)
         {
             return null;
@@ -38,7 +38,7 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>());
     }
 
-    private com.core.backend.entity.User findByLogin(String login)
+    private core.model.User findByLogin(String login)
     {
         return userService.getUserByLogin(login);
     }
