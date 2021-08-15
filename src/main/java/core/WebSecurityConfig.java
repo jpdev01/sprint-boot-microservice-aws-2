@@ -1,7 +1,7 @@
 package core;
 
-import security.jwt.JwtAuthenticationEntryPoint;
-import security.jwt.JwtRequestFilter;
+import core.security.jwt.JwtAuthenticationEntryPoint;
+import core.security.jwt.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

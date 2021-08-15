@@ -1,4 +1,4 @@
-package security.jwt;
+package core.security.jwt;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
