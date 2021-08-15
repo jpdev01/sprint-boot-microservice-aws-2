@@ -1,4 +1,4 @@
-package com.core.backend.jwt;
+package security.jwt;
 
 import java.io.Serializable;
 

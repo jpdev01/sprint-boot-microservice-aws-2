@@ -1,20 +1,18 @@
-package com.core.backend.jwt;
+package security.jwt;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.filter.OncePerRequestFilter;
-import io.jsonwebtoken.ExpiredJwtException;
-import com.core.backend.jwt.JwtTokenUtil;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Service
@@ -31,25 +29,25 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         if (!request.getServletPath().equals("/auth/login"))
         {
-            // colocar final por garantia
-            String requestTokenHeader = request.getHeader("Authorization");
+            final String requestTokenHeader = request.getHeader("Authorization");
 
             String username = null;
             String jwtToken = null;
 
-// JWT Token está no form "Bearer token". Remova a palavra Bearer e pegue somente o Token
+            // JWT Token está no form "Bearer token". Remova a palavra Bearer e pegue somente o Token
             if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
                 jwtToken = requestTokenHeader.substring(7);
                 try {
-                    if(jwtToken.equals("null"))
-                    {
+                    if (jwtToken.equals("null")) {
                         logger.warn("Token is null");
                     }
                     username = jwtTokenUtil.getUsernameFromToken(jwtToken);
 
-                } catch (IllegalArgumentException e) {
+                }
+                catch (IllegalArgumentException e) {
                     System.out.println("Unable to get JWT Token");
-                } catch (ExpiredJwtException e) {
+                }
+                catch (ExpiredJwtException e) {
                     System.out.println("JWT Token has expired");
                 }
             } else {
