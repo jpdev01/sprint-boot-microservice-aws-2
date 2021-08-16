@@ -1,6 +1,7 @@
 package core.security.jwt;
 
 import core.entity.User;
+import core.security.PortalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,6 +23,8 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
+    private String login;
+
 
     public ResponseEntity<?> createAuthenticationToken(JwtRequest authenticationRequest) throws Exception {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -31,6 +34,7 @@ public class JwtAuthenticationController {
             throw new Exception("INVALID_CREDENTIALS: Usuario ou senha incorretos.");
         }
         final String token = jwtTokenUtil.generateToken(userDetails);
+        setCurrentuser();
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
@@ -52,5 +56,11 @@ public class JwtAuthenticationController {
         catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
+    }
+
+    private void setCurrentuser()
+    {
+        User currentUser = userDetailsService.findByLogin(this.login);
+        PortalUtil.setCurrentUser(currentUser);
     }
 }

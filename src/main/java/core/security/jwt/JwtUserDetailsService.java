@@ -38,7 +38,7 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>());
     }
 
-    private core.entity.User findByLogin(String login)
+    public core.entity.User findByLogin(String login)
     {
         return userService.getUserByLogin(login);
     }
