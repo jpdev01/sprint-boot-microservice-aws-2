@@ -49,4 +49,14 @@ public class PortalUtil {
         }
     }
 
+    public static User getCurrentUser()
+    {
+        HttpSession session = getCurrentSession();
+        if(session != null)
+        {
+            return (User)session.getAttribute(USER);
+        }
+        return null;
+    }
+
 }
