@@ -64,4 +64,12 @@ public class User {
     public void setCompany(Company company) {
         this.company = company;
     }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
 }
