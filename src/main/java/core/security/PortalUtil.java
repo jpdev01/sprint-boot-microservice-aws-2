@@ -13,16 +13,6 @@ public class PortalUtil {
     private static final ThreadLocal<HttpServletRequest> currentRequestLocal = new ThreadLocal<HttpServletRequest>();
     private static final String USER = "currentUser";
 
-    private final static User getCurrentUser()
-    {
-        HttpSession session = getCurrentSession();
-        if(session!= null)
-        {
-            User user = (User) session.getAttribute(USER);
-        }
-        return null;
-    }
-
     public static void setCurrentRequest(final HttpServletRequest request)
     {
         currentRequestLocal.set(request);
