@@ -49,7 +49,6 @@ public class UserController {
     @RequestMapping(value = "edit/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@RequestBody User user, @PathVariable Integer id) {
         if (service.get(id) == null) {
-            // user not fouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuund
             return ResponseEntity.notFound().build();
         }
         service.save(user);
