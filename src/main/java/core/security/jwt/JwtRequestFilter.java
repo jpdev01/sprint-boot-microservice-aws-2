@@ -26,6 +26,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    static final String TOKEN_PREFIX = "Bearer";
+    static final String HEADER_STRING = "Authorization";
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
@@ -34,13 +37,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             if (!request.getServletPath().equals("/auth/login"))
             {
                 PortalUtil.setCurrentRequest(request);
-                final String requestTokenHeader = request.getHeader("Authorization");
+                final String requestTokenHeader = request.getHeader(HEADER_STRING);
 
                 String username = null;
                 String jwtToken = null;
 
                 // JWT Token está no form "Bearer token". Remova a palavra Bearer e pegue somente o Token
-                if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
+                if (requestTokenHeader != null && requestTokenHeader.startsWith(TOKEN_PREFIX)) {
                     jwtToken = requestTokenHeader.substring(7);
                     try {
                         if (jwtToken.equals("null")) {
