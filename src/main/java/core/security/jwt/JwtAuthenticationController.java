@@ -31,7 +31,8 @@ public class JwtAuthenticationController {
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
         if (userDetails == null) {
-            throw new Exception("INVALID_CREDENTIALS: Usuario ou senha incorretos.");
+            //throw new Exception("INVALID_CREDENTIALS: Usuario ou senha incorretos.");
+            return ResponseEntity.status(401).build();
         }
         final String token = jwtTokenUtil.generateToken(userDetails);
         setCurrentuser();
@@ -43,7 +44,9 @@ public class JwtAuthenticationController {
         JwtRequest jwtRequest = new JwtRequest();
         jwtRequest.setUsername(user.getLogin());
         jwtRequest.setPassword(user.getPassword());
-        return createAuthenticationToken(jwtRequest);
+        ResponseEntity<?> auth = createAuthenticationToken(jwtRequest);
+        return auth;
+        //return createAuthenticationToken(jwtRequest);
     }
 
     private void authenticate(String username, String password) throws Exception {

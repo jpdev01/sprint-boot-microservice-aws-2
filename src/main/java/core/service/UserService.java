@@ -51,7 +51,8 @@ public class UserService implements ServiceInterface<User> {
     }
 
     private boolean isValidUser(User user) {
-        return user != null && user.getLogin() != null && user.getPassword() != null;
+        String login = user.getLogin();
+        return user != null && login != null && user.getPassword() != null && getUserByLogin(login) == null;
     }
 
     public Integer validateLogin(String login, String password) {
