@@ -17,7 +17,7 @@ public class Navbar {
         this.fields = fields;
     }
 
-    public void addField(FieldNav newField)
+    public void addField(FieldNavInterface newField)
     {
         this.fields.add(newField);
     }
