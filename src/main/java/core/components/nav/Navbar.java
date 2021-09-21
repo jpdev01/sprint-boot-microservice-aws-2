@@ -1,5 +1,6 @@
 package core.components.nav;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Navbar {

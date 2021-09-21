@@ -19,7 +19,7 @@ public class I18nUtils {
 
     public static final Locale DEFAULT_LOCALE = new Locale("pt", "BR");
 
-    public static String getMessage(String message)
+    public static String getString(String message)
     {
         ResourceBundle bundle = ResourceBundle.getBundle("i18n", getCurrentLocale());
         return bundle.getString(message);

@@ -1,5 +1,8 @@
 package core.components.nav;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DropdownFieldNav implements FieldNavInterface{
     private String title;
     private String icon;
