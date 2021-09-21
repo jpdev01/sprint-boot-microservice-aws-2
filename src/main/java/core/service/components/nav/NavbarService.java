@@ -4,6 +4,7 @@ import core.components.nav.DropdownFieldNav;
 import core.components.nav.FieldNav;
 import core.components.nav.FieldNavInterface;
 import core.components.nav.Navbar;
+import core.translations.i18n.I18nUtils;
 import org.springframework.stereotype.Service;
 import utils.PatternUrl;
 
@@ -17,23 +18,23 @@ public class NavbarService {
         Navbar navbar = new Navbar();
 
         List<FieldNavInterface> fields = new ArrayList<>();
-        fields.add(new FieldNav("Ínicio","fa fa-home", PatternUrl.getHome()));
-        fields.add(new FieldNav("Portal de vendas","fa fa-cart-plus", PatternUrl.getStoreSpace(), true, true));
+        fields.add(new FieldNav(I18nUtils.getString("start"), "fa fa-home", PatternUrl.getHome()));
+        fields.add(new FieldNav(I18nUtils.getString("salesPortal"),"fa fa-cart-plus", PatternUrl.getStoreSpace(), true, true));
         // FIXME arrumar link quando componente existir
-        fields.add(new FieldNav("Caixa","fa fa-folder-open-o", ""));
-        fields.add(new FieldNav("Pagamentos","fa fa-credit-card-alt", ""));
+        fields.add(new FieldNav(I18nUtils.getString("box"),"fa fa-folder-open-o", ""));
+        fields.add(new FieldNav(I18nUtils.getString("payments"),"fa fa-credit-card-alt", ""));
 
-        DropdownFieldNav dropdown = new DropdownFieldNav("Consultas", "fa fa-home");
-        dropdown.addField(new FieldNav("Clientes", PatternUrl.getListRoute(PatternUrl.getCustomer())));
-        dropdown.addField(new FieldNav("Produtos", PatternUrl.getListRoute(PatternUrl.getProduct())));
-        dropdown.addField(new FieldNav("Fornecedores", PatternUrl.getListRoute(PatternUrl.getProvider())));
-        dropdown.addField(new FieldNav("Usuários", PatternUrl.getListRoute(PatternUrl.getUser())));
+        DropdownFieldNav dropdown = new DropdownFieldNav("queries", "fa fa-home");
+        dropdown.addField(new FieldNav(I18nUtils.getString("customers"), PatternUrl.getListRoute(PatternUrl.getCustomer())));
+        dropdown.addField(new FieldNav(I18nUtils.getString("products"), PatternUrl.getListRoute(PatternUrl.getProduct())));
+        dropdown.addField(new FieldNav(I18nUtils.getString("providers"), PatternUrl.getListRoute(PatternUrl.getProvider())));
+        dropdown.addField(new FieldNav(I18nUtils.getString("users"), PatternUrl.getListRoute(PatternUrl.getUser())));
         fields.add(dropdown);
 
-        DropdownFieldNav dropdownMore = new DropdownFieldNav("Mais", "fa fa-plus");
-        dropdownMore.addField(new FieldNav("Aniversariantes"));
+        DropdownFieldNav dropdownMore = new DropdownFieldNav("more", "fa fa-plus");
+        dropdownMore.addField(new FieldNav("birthdays"));
         fields.add(dropdownMore);
-        fields.add(new FieldNav("Sair", "fa fa-sign-out"));
+        fields.add(new FieldNav("exit", "fa fa-sign-out"));
         navbar.setFields(fields);
         return navbar;
     }
