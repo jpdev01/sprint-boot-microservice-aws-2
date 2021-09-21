@@ -16,15 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/nav")
-public class NavbarController {
+public class NavbarController
+{
 
-    @Autowired
-    NavbarService service;
+	@Autowired
+	NavbarService service;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Navbar> findAll() {
-        Navbar navbar = service.get();
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<Navbar> findAll()
+	{
+		Navbar navbar = service.get();
 
-        return new ResponseEntity<Navbar>(navbar, HttpStatus.OK);
-    }
+		return new ResponseEntity<Navbar>(navbar, HttpStatus.OK);
+	}
 }

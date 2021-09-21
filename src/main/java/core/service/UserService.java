@@ -12,54 +12,68 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements ServiceInterface<User> {
+public class UserService implements ServiceInterface<User>
+{
 
-    @Autowired
-    private UserRepository repository;
+	@Autowired
+	private UserRepository repository;
 
-    @Override
-    public void save(User user) {
-        try {
-            if (isValidUser(user)) {
-                Integer id = user.getId();
-                if (id != null) {
-                    if (repository.existsById(id)) {
-                        // FIXME Fazer validação de usuário já existe
-                    }
-                }
-                repository.save(user);
-            }
-        }
-        catch (Exception e) {
-            System.out.println("erro ao salvar usuário " + e);
-        }
-    }
+	@Override
+	public void save(User user)
+	{
+		try
+		{
+			if (isValidUser(user))
+			{
+				Integer id = user.getId();
+				if (id != null)
+				{
+					if (repository.existsById(id))
+					{
+						// FIXME Fazer validação de usuário já existe
+					}
+				}
+				repository.save(user);
+			}
+		}
+		catch (Exception e)
+		{
+			System.out.println("erro ao salvar usuário " + e);
+		}
+	}
 
-    @Override
-    public List<User> getAll() {
-        return repository.findAll();
-    }
+	@Override
+	public List<User> getAll()
+	{
+		return repository.findAll();
+	}
 
-    @Override
-    public Page<User> getAll(Pageable pageable) {
-        return repository.findAll(pageable);
-    }
+	@Override
+	public Page<User> getAll(Pageable pageable)
+	{
+		return repository.findAll(pageable);
+	}
 
-    @Override
-    public Optional<User> get(Integer id) {
-        return repository.findById(id);
-    }
+	@Override
+	public Optional<User> get(Integer id)
+	{
+		return repository.findById(id);
+	}
 
-    private boolean isValidUser(User user) {
-        String login = user.getLogin();
-        return user != null && login != null && user.getPassword() != null && getUserByLogin(login) == null;
-    }
+	private boolean isValidUser(User user)
+	{
+		String login = user.getLogin();
+		return user != null && login != null && user.getPassword() != null
+			&& getUserByLogin(login) == null;
+	}
 
-    public Integer validateLogin(String login, String password) {
-        return repository.validate(login, password);
-    }
+	public Integer validateLogin(String login, String password)
+	{
+		return repository.validate(login, password);
+	}
 
-    public User getUserByLogin(String login) {
-        return repository.findByLogin(login);
-    }
+	public User getUserByLogin(String login)
+	{
+		return repository.findByLogin(login);
+	}
 }

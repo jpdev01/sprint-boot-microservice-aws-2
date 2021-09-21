@@ -12,28 +12,33 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CompanyService implements ServiceInterface<User> {
+public class CompanyService implements ServiceInterface<User>
+{
 
-    @Autowired
-    private CompanyRepository companyRepository;
+	@Autowired
+	private CompanyRepository companyRepository;
 
-    @Override
-    public List<User> getAll() {
-        return companyRepository.findAll();
-    }
+	@Override
+	public List<User> getAll()
+	{
+		return companyRepository.findAll();
+	}
 
-    @Override
-    public Page<User> getAll(Pageable pageable) {
-        return companyRepository.findAll(pageable);
-    }
+	@Override
+	public Page<User> getAll(Pageable pageable)
+	{
+		return companyRepository.findAll(pageable);
+	}
 
-    @Override
-    public Optional<User> get(Integer id) {
-        return companyRepository.findById(id);
-    }
+	@Override
+	public Optional<User> get(Integer id)
+	{
+		return companyRepository.findById(id);
+	}
 
-    @Override
-    public void save(User entity) {
-        companyRepository.save(entity);
-    }
+	@Override
+	public void save(User entity)
+	{
+		companyRepository.save(entity);
+	}
 }
