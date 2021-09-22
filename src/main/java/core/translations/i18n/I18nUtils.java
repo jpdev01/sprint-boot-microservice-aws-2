@@ -30,6 +30,11 @@ public class I18nUtils {
         User currentUser = PortalUtil.getCurrentUser();
         if(currentUser != null)
         {
+            Language language = currentUser.getLanguage();
+            if(language == null)
+            {
+                return I18nUtils.getSystemLanguage();
+            }
             return currentUser.getLanguage();
         }
         return Language.valueOf(DEFAULT_LOCALE.getLanguage());
@@ -38,17 +43,17 @@ public class I18nUtils {
 
     public static Locale getCurrentLocale()
     {
-        return new Locale(getStringLanguage(),getCurrentCountry());
+        return new Locale(getStringLanguage(), getCurrentCountry());
     }
 
     public static String getStringLanguage()
     {
         Language language = getCurrentLanguage();
-        if(language.equals(Language.PR_BR))
+        if(Language.PR_BR.equals(language))
         {
             return "pt";
         }
-        else if(language.equals(Language.EN_US))
+        else if(Language.EN_US.equals(language))
         {
             return "en";
         }
@@ -106,5 +111,11 @@ public class I18nUtils {
             return Regions.GovCloud;
         }
         return Regions.SA_EAST_1;
+    }
+
+    public static Language getSystemLanguage()
+    {
+        //FIXME Implementar
+        return Language.PR_BR;
     }
 }

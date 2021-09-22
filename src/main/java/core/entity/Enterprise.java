@@ -12,4 +12,30 @@ public class Enterprise
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private String logoImage;
+
+	public Integer getId()
+	{
+		return id;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public String getLogoImage()
+	{
+		return logoImage;
+	}
+
+	public void setLogoImage(String logoImage)
+	{
+		this.logoImage = logoImage;
+	}
 }
