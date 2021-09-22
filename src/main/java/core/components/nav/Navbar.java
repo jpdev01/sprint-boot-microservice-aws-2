@@ -19,6 +19,10 @@ public class Navbar {
 
     public void addField(FieldNavInterface newField)
     {
+        if(newField.getOrder() == null)
+        {
+            newField.setOrder(this.fields.size() + 1);
+        }
         this.fields.add(newField);
     }
 
@@ -29,4 +33,23 @@ public class Navbar {
     public void setFields(List<FieldNavInterface> fields) {
         this.fields = fields;
     }
+
+    /*
+     * Valida order
+     */
+    public void safeOrderedFields(FieldNavInterface newField)
+    {
+        this.fields.sort((a, b) -> {
+            if(b.getOrder() == null)
+            {
+                b.setOrder(1);
+            }
+            if(a.getOrder() == null)
+            {
+                a.setOrder(2);
+            }
+            return a.getOrder() - b.getOrder();
+        });
+    }
+
 }

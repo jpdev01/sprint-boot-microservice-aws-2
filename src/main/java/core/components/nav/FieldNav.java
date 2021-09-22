@@ -8,6 +8,7 @@ public class FieldNav implements FieldNavInterface{
     //private SecurityLevel security;
     private boolean enable = true;
     private boolean newTab = false;
+    private Integer order;
 
     public FieldNav(String title)
     {
@@ -22,16 +23,39 @@ public class FieldNav implements FieldNavInterface{
         this.newTab = newTab;
     }
 
+    public FieldNav(String title, String icon, String link, boolean enable, boolean newTab, Integer order) {
+        this.title = title;
+        this.icon = icon;
+        this.link = link;
+        this.enable = enable;
+        this.newTab = newTab;
+        this.order = order;
+    }
+
     public FieldNav(String title, String icon, String link) {
         this.title = title;
         this.icon = icon;
         this.link = link;
     }
 
+    public FieldNav(String title, String icon, String link, Integer order) {
+        this.title = title;
+        this.icon = icon;
+        this.link = link;
+        this.order = order;
+    }
+
     public FieldNav(String title, String link)
     {
         this.title = title;
         this.link = link;
+    }
+
+    public FieldNav(String title, String link, Integer order)
+    {
+        this.title = title;
+        this.link = link;
+        this.order = order;
     }
 
     public String getTitle() {
@@ -72,6 +96,16 @@ public class FieldNav implements FieldNavInterface{
 
     public void setNewTab(boolean newTab) {
         this.newTab = newTab;
+    }
+
+    public void setOrder(Integer order)
+    {
+        this.order = order;
+    }
+
+    public Integer getOrder()
+    {
+        return this.order;
     }
 
 }

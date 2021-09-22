@@ -6,6 +6,7 @@ import java.util.List;
 public class DropdownFieldNav implements FieldNavInterface{
     private String title;
     private String icon;
+    private Integer order;
     private List<FieldNav> fields = new ArrayList<>();
 
     public DropdownFieldNav(String title, String icon, List<FieldNav> fields) {
@@ -17,6 +18,12 @@ public class DropdownFieldNav implements FieldNavInterface{
     public DropdownFieldNav(String title, String image) {
         this.title = title;
         this.icon = image;
+    }
+
+    public DropdownFieldNav(String title, String image, Integer order) {
+        this.title = title;
+        this.icon = image;
+        this.order = order;
     }
 
     public String getTitle() {
@@ -45,6 +52,22 @@ public class DropdownFieldNav implements FieldNavInterface{
 
     public void addField(FieldNav newField)
     {
+        if(newField.getOrder() == null)
+        {
+            newField.setOrder(this.fields.size() + 1);
+        }
         this.fields.add(newField);
+    }
+
+    @Override
+    public Integer getOrder()
+    {
+        return order;
+    }
+
+    @Override
+    public void setOrder(Integer order)
+    {
+        this.order = order;
     }
 }

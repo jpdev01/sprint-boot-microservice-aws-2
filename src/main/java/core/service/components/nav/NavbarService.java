@@ -5,6 +5,7 @@ import core.components.nav.FieldNav;
 import core.components.nav.FieldNavInterface;
 import core.components.nav.Navbar;
 import core.translations.i18n.I18nUtils;
+import java.lang.reflect.Field;
 import org.springframework.stereotype.Service;
 import utils.PatternUrl;
 
