@@ -1,4 +1,4 @@
-package core.controller.components.nav;
+package core.controller.nav;
 
 import core.components.nav.Navbar;
 import core.entity.User;
