@@ -21,6 +21,7 @@ public class I18nUtils {
 
     public static String getString(String message)
     {
+        // FIXME quando nao tiver aquela traducao, trazer o codigo.
         ResourceBundle bundle = ResourceBundle.getBundle("i18n", getCurrentLocale());
         return bundle.getString(message);
     }
