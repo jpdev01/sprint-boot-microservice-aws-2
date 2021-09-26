@@ -2,13 +2,13 @@ package utils;
 
 public class PatternUrl
 {
-	private static String home = "home";
-	private static String product = "product";
-	private static String customer = "customer";
-	private static String user = "user";
-	private static String category = "category";
-	private static String provider = "provider";
-	private static String storeSpace = "store";
+	private final static String home = "home";
+	private final static String product = "product";
+	private final static String customer = "customer";
+	private final static String user = "user";
+	private final static String category = "category";
+	private final static String provider = "provider";
+	private final static String insertRecords = "/record";
 
 	// components
 	private static String list = "list";
@@ -76,9 +76,9 @@ public class PatternUrl
 		provider = provider;
 	}
 
-	public static String getStoreSpace()
+	public static String getInsertRecords()
 	{
-		return storeSpace;
+		return insertRecords;
 	}
 
 	public static void setStoreSpace(String storeSpace)

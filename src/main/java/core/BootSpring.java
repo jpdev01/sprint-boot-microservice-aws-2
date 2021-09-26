@@ -23,7 +23,7 @@ public class BootSpring implements CommandLineRunner {
         // pega os parametros do aplicativo (com -D)
         if(Boolean.valueOf(System.getProperty("populateDatabaseTest")))
         {
-            fixDatabase.run();
+            //fixDatabase.run();
         }
      }
 }

@@ -16,4 +16,9 @@ public class EnterpriseService
 		return (Enterprise)repository.findAll().get(0);
 	}
 
+	public void save(Enterprise enterprise)
+	{
+		repository.save(enterprise);
+	}
+
 }
