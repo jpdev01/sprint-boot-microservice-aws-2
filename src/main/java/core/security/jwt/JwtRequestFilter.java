@@ -48,6 +48,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                     try {
                         if (jwtToken.equals("null")) {
                             logger.warn("Token is null");
+                            response.setStatus(401);
+                            response.sendError(401, "token is null");
                         }
                         username = jwtTokenUtil.getUsernameFromToken(jwtToken);
 
